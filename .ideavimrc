@@ -1,0 +1,12 @@
+
+" --- Configs ---
+
+"set visualbell
+"set noerrorbells
+set belloff
+
+
+
+" --- Keybindings ---
+
+inoremap <a-,> <esc>
