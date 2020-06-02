@@ -48,4 +48,4 @@ set autoindent
 
 " --- Keybindings ---
 
-inoremap <a-,> <esc>
+inoremap jj <esc>
