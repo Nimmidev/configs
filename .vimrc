@@ -1,3 +1,6 @@
+" Disable compatible mode
+set nocompatible
+
 " Install PluginManager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -44,8 +47,16 @@ set shiftwidth=4
 set autoindent
 
 
-
+" --- Filetype specific configs
+autocmd! BufWritePost *.tex call OnTexFileSaved()
 
 " --- Keybindings ---
 
 inoremap jj <esc>
+
+" --- Functions
+function OnTexFileSaved()
+    :silent exec "!rm " . expand("%:r") . ".pdf"
+    :silent exec "!pdflatex " . expand("%:t") . " & cmd.exe /c start " . expand("%:r") . ".pdf"
+    :redraw!
+endfunction
