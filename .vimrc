@@ -57,6 +57,6 @@ inoremap jj <esc>
 " --- Functions
 function OnTexFileSaved()
     :silent exec "!rm " . expand("%:r") . ".pdf"
-    :silent exec "!pdflatex " . expand("%:t") . " & cmd.exe /c start " . expand("%:r") . ".pdf"
+    :silent exec "!pdflatex " . expand("%:t") . " && cmd.exe /c start " . expand("%:r") . ".pdf"
     :redraw!
 endfunction
