@@ -48,15 +48,23 @@ set autoindent
 
 
 " --- Filetype specific configs
-autocmd! BufWritePost *.tex call OnTexFileSaved()
+" autocmd! BufWritePost *.tex call OnTexFileSaved()
+
+" --- Commands ---
+command Mktex :call CmdMkTex()
+command Showtex :call CmdShowText()
 
 " --- Keybindings ---
-
 inoremap jj <esc>
 
 " --- Functions
-function OnTexFileSaved()
+function CmdMkTex()
     :silent exec "!rm " . expand("%:r") . ".pdf"
     :silent exec "!pdflatex " . expand("%:t") . " && cmd.exe /c start " . expand("%:r") . ".pdf"
+    :redraw!
+endfunction
+
+function CmdShowText()
+    :silent exec "!cmd.exe /c start " . expand("%:r") . ".pdf"
     :redraw!
 endfunction
