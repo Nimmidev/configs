@@ -60,6 +60,9 @@ inoremap jj <esc>
 " --- Functions
 function CmdMkTex()
     :silent exec "!rm " . expand("%:r") . ".pdf"
+    :silent exec "!pdflatex " . expand("%:t")
+    :silent exec "!bibtex " . expand("%:r") . ".aux"
+    :silent exec "!pdflatex " . expand("%:t")
     :silent exec "!pdflatex " . expand("%:t") . " && cmd.exe /c start " . expand("%:r") . ".pdf"
     :redraw!
 endfunction
