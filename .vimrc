@@ -52,7 +52,7 @@ set autoindent
 
 " --- Commands ---
 command Mktex :call CmdMkTex()
-command Showtex :call CmdShowText()
+command Viewtex :call CmdViewTex()
 
 " --- Keybindings ---
 inoremap jj <esc>
@@ -67,7 +67,7 @@ function CmdMkTex()
     :redraw!
 endfunction
 
-function CmdShowText()
+function CmdViewTex()
     :silent exec "!cmd.exe /c start " . expand("%:r") . ".pdf"
     :redraw!
 endfunction
